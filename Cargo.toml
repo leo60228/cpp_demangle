@@ -32,6 +32,8 @@ glob = "0.3.0"
 
 [dependencies]
 cfg-if = "0.1.9"
+core = { version = "1.0.0", package = 'rustc-std-workspace-core' }
+alloc = { version = "1.0.0", optional = true, package = "rustc-std-workspace-alloc" }
 
 [dependencies.afl]
 optional = true
@@ -43,15 +45,11 @@ diff = "0.1.11"
 
 [features]
 # Default features.
-default = ["std"]
+default = ["alloc"]
 
 # Build using the `std` library. Disabling this and enabling the `alloc` feature
 # enables `no_std` support.
 std = []
-
-# Use collections from the `alloc` crate rather than from `std`. Combined with
-# disabling `std`, this enables `no_std` support.
-alloc = []
 
 # Enable copious amounts of logging. This is for internal use only, and is only
 # useful for hacking on `cpp_demangle` itself.
